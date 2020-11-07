@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ncage+ Options</title>
+</head>
+<body>
+    <h1>Ncage+ Extension Options</h1>
+    <h2>Image Replacement</h2>
+    <label>
+        <input type="checkbox"> Enable Image Replacement
+    </label>
+    <br>
+    <label>Replacement Rate</label>
+    <input type="number" min="0" max="100" value="50"> %
+    <br>
+    <label>
+        <input type="checkbox"> Enable Gradual Increase
+    </label>
+    <br>
+    <label>Daily Replacement Rate Increment</label>
+    <input type="number" min="0" max="100" value="3"> %
+    <div id="status"></div>
+    <button id="save">Save</button>
+    <script src="options.js"></script>
+</body>
+</html>

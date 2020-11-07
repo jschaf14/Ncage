@@ -11,7 +11,8 @@
             "run_at": "document_end"
         }
     ],
-    "name": "Basic",
+    "name": "nCage+",
+    "options_page": "options.html",
     "description": "Executes on load",
     "version": "0.1"
 }
