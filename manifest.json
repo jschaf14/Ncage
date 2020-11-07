@@ -1,4 +1,9 @@
 {
+    "name": "nCage+",
+    "options_page": "options.html",
+    "permissions": ["storage"],
+    "description": "Executes on load",
+    "version": "0.1",
     "manifest_version": 2,
     "content_scripts": [
         {
@@ -10,9 +15,5 @@
             ],
             "run_at": "document_end"
         }
-    ],
-    "name": "nCage+",
-    "options_page": "options.html",
-    "description": "Executes on load",
-    "version": "0.1"
+    ]    
 }
