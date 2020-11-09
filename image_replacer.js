@@ -16,6 +16,7 @@ window.onload = function () {
         if(shouldReplaceImg()) {
             // reset the image source
             image.src = "https://www.gstatic.com/tv/thumb/persons/258/258_v9_bb.jpg"
+            image.setAttribute("style", "object-fit:cover;")
         }
     }
 }
