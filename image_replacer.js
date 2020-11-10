@@ -14,14 +14,14 @@ window.onload = function () {
     for (var image of allImages) {
         if(shouldReplaceImg()) {
             // reset the image source
-            image.src = "https://www.gstatic.com/tv/thumb/persons/258/258_v9_bb.jpg"
+            image.src = "https://www.gstatic.com/tv/thumb/persons/258/258_v9_bb.jpg";
             // some images have a "srcset" attribute instead of "src". Set both so it always works.
-            image.srcset = "https://www.gstatic.com/tv/thumb/persons/258/258_v9_bb.jpg"
+            image.srcset = "https://www.gstatic.com/tv/thumb/persons/258/258_v9_bb.jpg";
             // set the height and width of the new image to be the same as the old 
             // (this is important if the original image doesn't have existing height and width attributes)
-            image.setAttribute("height",image.height)
-            image.setAttribute("width",image.width)
-            image.setAttribute("style", "object-fit:cover;")
+            image.setAttribute("height", image.height);
+            image.setAttribute("width", image.width);
+            image.setAttribute("style", "object-fit:cover;");
         }
     }
 }
