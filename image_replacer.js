@@ -25,6 +25,6 @@ function shouldReplaceImg(){
     // generate a random number from 1 to 100
     rand = Math.floor(Math.random() * 100) + 1;
     // replace the image according to the probability set in the options page
-    return rand < imgReplaceProb;
+    return rand <= imgReplaceProb;
 }
 

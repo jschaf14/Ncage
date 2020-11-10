@@ -27,6 +27,6 @@ function save_options() {
 //     });
 //   }
 
-document.addEventListener('DOMContentLoaded', restore_options);
+// document.addEventListener('DOMContentLoaded', restore_options);
 // listen for when the save button in settings is clicked.
 document.getElementById('save').addEventListener('click', save_options);
