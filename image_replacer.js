@@ -21,6 +21,7 @@ window.onload = function () {
             // (this is important if the original image doesn't have existing height and width attributes)
             image.setAttribute("height", image.height);
             image.setAttribute("width", image.width);
+            // this line takes care of image resizing
             image.setAttribute("style", "object-fit:cover;");
         }
     }
