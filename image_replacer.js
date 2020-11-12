@@ -10,11 +10,11 @@ chrome.storage.sync.get('imgReplaceProb', function(data) {
 window.onload = function () {
     // get an array of all the image elements
     // var allImages = document.getElementsByTagName("img");
-    var allImages = document.images
+    var allImages = document.images;
     // loop though that array of image elements
     for (var image of allImages) {
         if(shouldReplaceImg()) {
-            replaceImage(image)
+            replaceImage(image);
         }
     }
 }
