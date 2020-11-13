@@ -10,16 +10,20 @@ chrome.storage.sync.get('imgReplaceProb', function(data) {
 window.onload = function () {
     // get an array of all the image elements
     var allImages = document.getElementsByTagName("img");
-
     // loop though that array of image elements
     for (var image of allImages) {
         if(shouldReplaceImg()) {
             // reset the image source
-            image.src = "https://www.gstatic.com/tv/thumb/persons/258/258_v9_bb.jpg"
+            image.src = getRandomImage();
         }
     }
 }
 
+function getRandomImage(){
+    // pick a random image url from the list
+    randIndex = Math.floor(Math.random() * ncageImages.length);
+    return ncageImages[randIndex];
+}
 
 function shouldReplaceImg(){
     // generate a random number from 1 to 100
