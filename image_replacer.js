@@ -8,7 +8,6 @@ chrome.storage.sync.get('imgReplaceProb', function(data) {
 
 // wait till loaded
 window.onload = function () {
-    console.log("here");
     // get an array of all the image elements
     // var allImages = document.getElementsByTagName("img");
     var allImages = document.images;
@@ -23,10 +22,8 @@ window.onload = function () {
 function replaceImage(image){
     // set the height and width of the new image to be the same as the old 
     // (this is important if the original image doesn't have existing height and width attributes)
-    image.setAttribute("height", image.height);
-    image.setAttribute("width", image.width);
-    // this line takes care of image resizing
-    image.setAttribute("style", "object-fit:cover;");
+    // the "object-fit:cover" line takes care of image resizing
+    image.setAttribute("style", `height:${image.height}px; width:${image.width}px; object-fit:cover;`);
     // reset the image source
     image.src = "https://www.gstatic.com/tv/thumb/persons/258/258_v9_bb.jpg";
     // some images have a "srcset" attribute instead of "src". Set both so it always works.
