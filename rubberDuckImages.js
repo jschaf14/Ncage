@@ -1,4 +1,4 @@
-var ncageImages = [
+var rubberDuckImages = [
     "https://i.imgur.com/EmQJQwU.jpg",
     "https://i.imgur.com/DBd3vna.png",
     "https://i.imgur.com/zNR5UFp.jpg",
