@@ -28,4 +28,4 @@ var rubberDuckImages = [
     "https://i.imgur.com/LKGMLso.jpg",
     "https://i.imgur.com/DrkSFsE.jpg",
     "https://i.imgur.com/dGTwDgF.jpg"    
-]
+];

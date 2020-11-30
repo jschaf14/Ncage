@@ -50,4 +50,4 @@ var animeGirlImages = [
     "https://i.imgur.com/AoZUYh3.gif",
     "https://i.imgur.com/AjtGUwF.gif",
     "https://i.imgur.com/uUHNVdL.gif"
-]
+];
