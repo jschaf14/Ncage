@@ -19,15 +19,12 @@ window.onload = function () {
 }
 
 function replaceImage(image){
-    // set the height and width of the new image to be the same as the old 
-    // (this is important if the original image doesn't have existing height and width attributes)
-    // the "object-fit:cover" line takes care of image resizing
-    image.setAttribute("style", `height:${image.height}px; width:${image.width}px; object-fit:cover;`);
-    // reset the image source
     newSrc = getRandomImage();
+    // this line uses CSS to keep the old size of the image (this is important if the original image doesn't have existing height and width attributes)
+    // it scales and crops the replacement image to fit, and also sets the image content to be the replacement image
+    image.setAttribute("style", `height:${image.height}px; width:${image.width}px; object-fit:cover; content:url(${newSrc});`);
+    // also set the image src attribute for good measure (though it doesn't appear to be strictly necessary)
     image.src = newSrc;
-    // some images have a "srcset" attribute instead of "src". Set both so it always works.
-    image.srcset = newSrc;
 }
 
 function getRandomImage(){
