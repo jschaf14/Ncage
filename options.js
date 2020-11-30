@@ -1,6 +1,6 @@
 // Saves options to chrome.storage
 function save_options() {
-    var imgReplaceProbability = document.getElementById('probability').value;
+    var imgReplaceProbability = document.getElementById('imgReplaceProb').value;
     chrome.storage.sync.set({
         imgReplaceProb: imgReplaceProbability    
     }, function() {

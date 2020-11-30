@@ -1,12 +1,28 @@
 imgReplaceProb = 0;
 
 // get the probability that was set in the options page
-chrome.storage.sync.get('imgReplaceProb', function(data) {
-    imgReplaceProb = data.imgReplaceProb;
-});
+async function init() {
+    var p = new Promise(function(resolve, reject){
+        chrome.storage.sync.get("imgReplaceProb", function(data){
+            if(data.imgReplaceProb != undefined){
+                imgReplaceProb = data.imgReplaceProb;
+            }else{
+                console.log("Could not retrieve image replacement probability.");
+                reject();
+            }
+        })
+    });
+
+    await p;
+    // now that we have the data we need from storage, run the replacement rules.
+    main();
+    
+}
+init();
 
 // wait till loaded
-window.onload = function () {
+function main() {
+    console.log(`Image replace prob: ${imgReplaceProb}`);
     // get an array of all the image elements
     // var allImages = document.getElementsByTagName("img");
     var allImages = document.images;
