@@ -53,8 +53,8 @@ function getRandomImage(){
 }
 
 function shouldReplaceImg(){
-    // generate a random number from 1 to 100
-    rand = Math.floor(Math.random() * 100) + 1;
+    // generate a random number from 0 to 1
+    rand = Math.random();
     // replace the image according to the probability set in the options page
     return rand <= imgReplaceProb;
 }
