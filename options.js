@@ -1,5 +1,6 @@
 // Saves options to chrome.storage
 function save_options() {
+    var enableImageReplacement = document.getElementById('enableImageReplacement').checked;
     // retrieve the replacement percentage and convert it into a probability
     var imgReplaceProbability = document.getElementById('imgReplaceProb').value / 100;
 
@@ -22,6 +23,7 @@ function save_options() {
     chrome.storage.sync.set({
         settings: {
             imageReplacement: {
+                "enableImgReplace": enableImageReplacement,
                 "imgReplaceProb": imgReplaceProbability,
                 "imgLibrary": imgLib
             }
