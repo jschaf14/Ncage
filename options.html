@@ -2,6 +2,10 @@
 <html>
 <head>
     <title>Ncage+ Options</title>
+    <!-- It's important to load the image libraries here so options.js can have access to them -->
+    <script src="ncageImages.js"></script>
+    <script src="rubberDuckImages.js"></script>
+    <script src="animeGirlImages.js"></script>
 </head>
 <body>
     <h1>Ncage+ Extension Options</h1>
@@ -12,6 +16,13 @@
     <br>
     <label>Replacement Rate</label>
     <input id="imgReplaceProb" type="number" min="0" max="100" value="50"> %
+    <br>
+    <label>Select a library of images to use:</label>
+    <select name="libs" id="imageLibrary">
+        <option value="nCage">Nicholas Cage</option>
+        <option value="rubberDucks">Rubber Ducks</option>
+        <option value="animeGirls">Anime Girls</option>
+      </select>
     <br>
     <label>
         <input type="checkbox"> Enable Gradual Increase

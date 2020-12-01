@@ -1,28 +1,31 @@
 imgReplaceProb = 0;
+imgLib = [];
 
-// get the probability that was set in the options page
+// asynchronously get the probability that was set in the options page
 async function init() {
     var p = new Promise(function(resolve, reject){
-        chrome.storage.sync.get("imgReplaceProb", function(data){
-            if(data.imgReplaceProb != undefined){
-                imgReplaceProb = data.imgReplaceProb;
+        chrome.storage.sync.get("settings", function(data){
+            if(data.settings != undefined){
+                imgReplaceProb = data.settings.imageReplacement.imgReplaceProb;
+                imgLib = data.settings.imageReplacement.imgLibrary;
+                resolve();
             }else{
-                console.log("Could not retrieve image replacement probability.");
+                console.log("Could not retrieve image replacement settings.");
                 reject();
             }
         })
     });
-
+    // wait for the data to load
     await p;
     // now that we have the data we need from storage, run the replacement rules.
     main();
     
 }
+// this is the entry point; init grabs the settings data from storage
 init();
 
 // wait till loaded
 function main() {
-    console.log(`Image replace prob: ${imgReplaceProb}`);
     // get an array of all the image elements
     // var allImages = document.getElementsByTagName("img");
     var allImages = document.images;
@@ -45,8 +48,8 @@ function replaceImage(image){
 
 function getRandomImage(){
     // pick a random image url from the list
-    randIndex = Math.floor(Math.random() * ncageImages.length);
-    return ncageImages[randIndex];
+    randIndex = Math.floor(Math.random() * imgLib.length);
+    return imgLib[randIndex];
 }
 
 function shouldReplaceImg(){

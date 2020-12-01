@@ -1,8 +1,29 @@
 // Saves options to chrome.storage
 function save_options() {
     var imgReplaceProbability = document.getElementById('imgReplaceProb').value;
+
+    var imgLibOption = document.getElementById('imageLibrary').value;
+    imgLib = [];
+    // if you're adding a new image library, make sure to add it to options.html as well so options.js can see it
+    switch(imgLibOption){
+        case "nCage":
+            imgLib = ncageImages;
+            break;
+        case "rubberDucks":
+            imgLib = rubberDuckImages;
+            break;
+        case "animeGirls":
+            imgLib = animeGirlImages;
+            break;
+    }
+
     chrome.storage.sync.set({
-        imgReplaceProb: imgReplaceProbability    
+        settings: {
+            imageReplacement: {
+                "imgReplaceProb": imgReplaceProbability,
+                "imgLibrary": imgLib
+            }
+        }  
     }, function() {
         // Update status to let user know options were saved.
         var status = document.getElementById('status');

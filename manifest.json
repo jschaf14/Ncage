@@ -11,10 +11,12 @@
                 "<all_urls>"
             ],
             "js": [
-                "image_replacer.js",
-                "ncageImages.js"
+                "ncageImages.js",
+                "rubberDuckImages.js",
+                "animeGirlImages.js",
+                "image_replacer.js"
             ],
             "run_at": "document_end"
         }
-    ]    
+    ]
 }
