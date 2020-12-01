@@ -1,11 +1,6 @@
-h2 {
-    color:red;
-}
 .censoredContent{
     filter: blur(14px);
-    opacity:.2;
-    /* background-color: black; */
-    
+    opacity:.3;
 }
 .censoredContainer{
     /* background-color: rgba(0,0,0,1); */
@@ -14,6 +9,7 @@ h2 {
     text-align: center !important;
     color: white !important;
     overflow: hidden;
+    word-wrap: normal;
 }
 .censoredText {
     /* color: red; */

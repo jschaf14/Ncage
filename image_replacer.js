@@ -55,6 +55,7 @@ function replaceImage(image){
 }
 
 function censorImage(image){
+    warnings = ["CENSORED", "REDACTED", "VIEWER DISCRETION ADVISED", "ADVISORY CONTENT", "CONTENT BLOCKED", "ADULT CONTENT"];
     scan = true;
     element = image;
     while(scan){
@@ -65,9 +66,12 @@ function censorImage(image){
         element = element.parentNode;
         // find the parent div of this image
         if(element.nodeName.toLowerCase() == "div"){
+            // add the necessary elements and styling to make it look threatening
             element.classList.add("censoredContainer");
             censoredText = document.createElement("DIV");
-            censoredText.innerHTML = "CENSORED";
+            randIndex = Math.floor(Math.random() * warnings.length);
+            warning = warnings[randIndex];
+            censoredText.innerHTML = warning;
             censoredText.classList.add("censoredText");
             element.appendChild(censoredText);
             image.classList.add("censoredContent");
