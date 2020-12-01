@@ -10,6 +10,7 @@
             "matches": [
                 "<all_urls>"
             ],
+            "css": ["css/style.css"],
             "js": [
                 "ncageImages.js",
                 "rubberDuckImages.js",

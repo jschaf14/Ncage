@@ -1,0 +1,25 @@
+h2 {
+    color:red;
+}
+.censoredContent{
+    filter: blur(14px);
+    opacity:.2;
+    /* background-color: black; */
+    
+}
+.censoredContainer{
+    /* background-color: rgba(0,0,0,1); */
+    background: black !important;
+    position: relative !important;
+    text-align: center !important;
+    color: white !important;
+    overflow: hidden;
+}
+.censoredText {
+    /* color: red; */
+    visibility: visible !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+}

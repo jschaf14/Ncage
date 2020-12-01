@@ -17,6 +17,9 @@ function save_options() {
         case "animeGirls":
             imgLib = animeGirlImages;
             break;
+        case "censored":
+            imgLib = "censored";
+            break;
     }
 
     // the settings for the extension are stored as a json object
