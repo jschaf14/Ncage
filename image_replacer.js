@@ -5,18 +5,26 @@ chrome.storage.sync.get('imgReplaceProb', function(data) {
     imgReplaceProb = data.imgReplaceProb;
 });
 
-
 // wait till loaded
 window.onload = function () {
     // get an array of all the image elements
-    var allImages = document.getElementsByTagName("img");
+    // var allImages = document.getElementsByTagName("img");
+    var allImages = document.images;
     // loop though that array of image elements
     for (var image of allImages) {
         if(shouldReplaceImg()) {
-            // reset the image source
-            image.src = getRandomImage();
+            replaceImage(image);
         }
     }
+}
+
+function replaceImage(image){
+    newSrc = getRandomImage();
+    // this line uses CSS to keep the old size of the image (this is important if the original image doesn't have existing height and width attributes)
+    // it scales and crops the replacement image to fit, and also sets the image content to be the replacement image
+    image.setAttribute("style", `height:${image.height}px; width:${image.width}px; object-fit:cover; content:url(${newSrc});`);
+    // also set the image src attribute for good measure (though it doesn't appear to be strictly necessary)
+    image.src = newSrc;
 }
 
 function getRandomImage(){
