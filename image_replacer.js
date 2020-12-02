@@ -55,7 +55,7 @@ function replaceImage(image){
 }
 
 function censorImage(image){
-    warnings = ["CENSORED", "REDACTED", "VIEWER DISCRETION ADVISED", "ADVISORY CONTENT", "CONTENT BLOCKED", "ADULT CONTENT"];
+    warnings = ["CENSORED", "REDACTED", "VIEWER DISCRETION ADVISED", "ADVISORY CONTENT", "CONTENT BLOCKED", "ADULT CONTENT", "RESTRICTED CONTENT"];
     scan = true;
     element = image;
     while(scan){

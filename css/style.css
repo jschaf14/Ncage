@@ -1,6 +1,6 @@
 .censoredContent{
-    filter: blur(14px);
-    opacity:.3;
+    filter: blur(25px) !important;
+    opacity:.3 !important;
 }
 .censoredContainer{
     /* background-color: rgba(0,0,0,1); */
@@ -8,8 +8,8 @@
     position: relative !important;
     text-align: center !important;
     color: white !important;
-    overflow: hidden;
-    word-wrap: normal;
+    overflow: hidden !important;
+    word-wrap: normal !important;
 }
 .censoredText {
     /* color: red; */
