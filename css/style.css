@@ -1,6 +1,6 @@
 .censoredContent{
-    filter: blur(25px) !important;
-    opacity:.3 !important;
+    filter: blur(17px) !important;
+    opacity:.5 !important;
 }
 .censoredContainer{
     /* background-color: rgba(0,0,0,1); */
