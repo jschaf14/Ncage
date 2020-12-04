@@ -45,20 +45,9 @@ function save_options() {
 // TODO: sync the settings page to reflect what is in the system storage:
 // Restores settings state using the preferences stored in chrome.storage.
 function restore_options() {
-    // these settings will populate the options page the first time it's loaded.
-    // later accesses will use existing values in chrome storage
-    defaultSettings = { 
-        imageReplacement: {
-            "enableImgReplace": true,
-            "imgReplaceProb": .03,
-            "imgLibraryName": "nCage",
-            "imgLibrary": ncageImages
-        }
-    };
-    console.log(defaultSettings);
-    // todo: I might be able to set default options here as well
-    chrome.storage.sync.get({"settings": defaultSettings}, function(data) {
-        // console.log(data);
+    // the first time the page is loaded, it will use the default options declared in defaultOptions.js
+    // subsequent accesses will use existing values in chrome storage
+    chrome.storage.sync.get({"settings": defaultOptions.settings}, function(data) {
         document.getElementById("enableImageReplacement").checked = data.settings.imageReplacement.enableImgReplace;
         document.getElementById("imageLibrary").value = data.settings.imageReplacement.imgLibraryName;
         document.getElementById("imgReplaceProb").value = data.settings.imageReplacement.imgReplaceProb * 100;
