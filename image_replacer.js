@@ -5,16 +5,12 @@ imgLib = [];
 // asynchronously get the probability that was set in the options page
 async function init() {
     var p = new Promise(function(resolve, reject){
-        chrome.storage.sync.get("settings", function(data){
-            if(data.settings != undefined){
-                enableImgReplace = data.settings.imageReplacement.enableImgReplace;
-                imgReplaceProb = data.settings.imageReplacement.imgReplaceProb;
-                imgLib = data.settings.imageReplacement.imgLibrary;
-                resolve();
-            }else{
-                console.log("Could not retrieve image replacement settings.");
-                reject();
-            }
+        // if nothing is set in storage yet, it will use the default options declared in defaultOptions.js
+        chrome.storage.sync.get({"settings": defaultOptions.settings}, function(data){
+            enableImgReplace = data.settings.imageReplacement.enableImgReplace;
+            imgReplaceProb = data.settings.imageReplacement.imgReplaceProb;
+            imgLib = data.settings.imageReplacement.imgLibrary;
+            resolve();
         })
     });
     // wait for the data to load
