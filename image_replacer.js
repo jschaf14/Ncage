@@ -1,29 +1,95 @@
+enableImgReplace = false;
 imgReplaceProb = 0;
+imgLib = [];
+numImages = 0;
 
-// get the probability that was set in the options page
-chrome.storage.sync.get('imgReplaceProb', function(data) {
-    imgReplaceProb = data.imgReplaceProb;
-});
+// asynchronously get the probability that was set in the options page
+async function init() {
+    var p = new Promise(function(resolve, reject){
+        // if nothing is set in storage yet, it will use the default options declared in defaultOptions.js
+        chrome.storage.sync.get({"settings": defaultOptions.settings}, function(data){
+            enableImgReplace = data.settings.imageReplacement.enableImgReplace;
+            imgReplaceProb = data.settings.imageReplacement.imgReplaceProb;
+            imgLib = data.settings.imageReplacement.imgLibrary;
+            resolve();
+        })
+    });
+    // wait for the data to load
+    await p;
+    // now that we have the data we need from storage, run the replacement rules.
+    if(enableImgReplace){
+        main();
+        // this will run main every three seconds to catch any images that are loaded after the initial page load (for scrolling feeds)
+        setInterval(main, 3000);
+    }    
+}
+// this is the entry point; init grabs the settings data from storage and then calls main()
+init();
 
-// wait till loaded
-window.onload = function () {
-
+// main drives all the replacement logic
+function main() {
     // get an array of all the image elements
-    var allImages = document.getElementsByTagName("img");
-
-    // loop though that array of image elements
-    for (var image of allImages) {
+    // var allImages = document.getElementsByTagName("img");
+    var allImages = document.images;
+    // loop though that array of image elements, skipping ones that have already been considered
+    for(var i=numImages; i<allImages.length; i++) {
+        console.log("evaluating image");
         if(shouldReplaceImg()) {
-            // reset the image source
-            image.src = "https://www.gstatic.com/tv/thumb/persons/258/258_v9_bb.jpg"
+            replaceImage(allImages[i]);
+        }
+    }
+    numImages = allImages.length;
+}
+
+function replaceImage(image){
+    // if the category is "censored" apply the CSS rules. Otherwise do normal image replacement
+    if(imgLib == "censored"){
+        censorImage(image);
+    }else{
+        newSrc = getRandomImage();
+        // this line uses CSS to keep the old size of the image (this is important if the original image doesn't have existing height and width attributes)
+        // it scales and crops the replacement image to fit, and also sets the image content to be the replacement image
+        image.setAttribute("style", `height:${image.height}px; width:${image.width}px; object-fit:cover; content:url(${newSrc});`);
+        // also set the image src attribute for good measure (though it doesn't appear to be strictly necessary)
+        image.src = newSrc;
+    }
+}
+
+function censorImage(image){
+    warnings = ["CENSORED", "REDACTED", "VIEWER DISCRETION ADVISED", "ADVISORY CONTENT", "CONTENT BLOCKED", "ADULT CONTENT", "RESTRICTED CONTENT"];
+    scan = true;
+    element = image;
+    while(scan){
+        // if the current element doesn't have a parent node
+        if(element.parentNode == undefined) {
+            break;
+        }
+        element = element.parentNode;
+        // find the parent div of this image
+        if(element.nodeName.toLowerCase() == "div"){
+            // add the necessary elements and styling to make it look threatening
+            element.classList.add("censoredContainer");
+            censoredText = document.createElement("DIV");
+            randIndex = Math.floor(Math.random() * warnings.length);
+            warning = warnings[randIndex];
+            censoredText.innerHTML = warning;
+            censoredText.classList.add("censoredText");
+            element.appendChild(censoredText);
+            image.classList.add("censoredContent");
+            scan = false;
         }
     }
 }
 
+function getRandomImage(){
+    // pick a random image url from the list
+    randIndex = Math.floor(Math.random() * imgLib.length);
+    return imgLib[randIndex];
+}
 
 function shouldReplaceImg(){
-    // generate a random number from 1 to 100
-    rand = Math.floor(Math.random() * 100) + 1;
+    // generate a random number from 0 to 1
+    rand = Math.random();
     // replace the image according to the probability set in the options page
     return rand <= imgReplaceProb;
 }
