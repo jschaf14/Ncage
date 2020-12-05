@@ -10,9 +10,12 @@
             "matches": [
                 "<all_urls>"
             ],
+            "css": ["css/style.css"],
             "js": [
-                "image_replacer.js",
-                "ncageImages.js"
+                "ncageImages.js",
+                "rubberDuckImages.js",
+                "animeGirlImages.js",
+                "image_replacer.js"
             ],
             "run_at": "document_end"
         }
@@ -21,5 +24,5 @@
         "16": "icon16.png",
         "48": "icon48.png",
         "128": "icon128.png"
-    }  
+    }
 }
