@@ -1,6 +1,7 @@
 enableImgReplace = false;
 imgReplaceProb = 0;
 imgLib = [];
+numImages = 0;
 
 // asynchronously get the probability that was set in the options page
 async function init() {
@@ -18,22 +19,26 @@ async function init() {
     // now that we have the data we need from storage, run the replacement rules.
     if(enableImgReplace){
         main();
+        // this will run main every three seconds to catch any images that are loaded after the initial page load (for scrolling feeds)
+        setInterval(main, 3000);
     }    
 }
-// this is the entry point; init grabs the settings data from storage
+// this is the entry point; init grabs the settings data from storage and then calls main()
 init();
 
-// wait till loaded
+// main drives all the replacement logic
 function main() {
     // get an array of all the image elements
     // var allImages = document.getElementsByTagName("img");
     var allImages = document.images;
-    // loop though that array of image elements
-    for (var image of allImages) {
+    // loop though that array of image elements, skipping ones that have already been considered
+    for(var i=numImages; i<allImages.length; i++) {
+        console.log("evaluating image");
         if(shouldReplaceImg()) {
-            replaceImage(image);
+            replaceImage(allImages[i]);
         }
     }
+    numImages = allImages.length;
 }
 
 function replaceImage(image){
