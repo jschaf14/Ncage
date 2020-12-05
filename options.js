@@ -2,7 +2,10 @@
 function save_options() {
     var imgReplaceProbability = document.getElementById('probability').value;
     chrome.storage.sync.set({
-        imgReplaceProb: imgReplaceProbability    
+        imgReplaceProb: imgReplaceProbability,
+        strReplaceProb: 100,
+        strReplacement: true
+
     }, function() {
         // Update status to let user know options were saved.
         var status = document.getElementById('status');
