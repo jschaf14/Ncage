@@ -93,4 +93,3 @@ function shouldReplaceImg(){
     // replace the image according to the probability set in the options page
     return rand <= imgReplaceProb;
 }
-

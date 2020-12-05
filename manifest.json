@@ -16,7 +16,8 @@
                 "rubberDuckImages.js",
                 "animeGirlImages.js",
                 "defaultOptions.js",
-                "image_replacer.js"
+                "image_replacer.js",
+                "string_replacer.js"
             ],
             "run_at": "document_end"
         }
