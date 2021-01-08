@@ -33,7 +33,6 @@ function main() {
     var allImages = document.images;
     // loop though that array of image elements, skipping ones that have already been considered
     for(var i=numImages; i<allImages.length; i++) {
-        console.log("evaluating image");
         if(shouldReplaceImg()) {
             replaceImage(allImages[i]);
         }
