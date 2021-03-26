@@ -1,3 +1,12 @@
+/*CSS for the options page */
+body{
+   width:80%;
+   display:block;
+   margin-right:auto;
+   margin-left:auto; 
+}
+
+/* CSS for censored image alteration */
 .censoredContent{
     filter: blur(17px) !important;
     opacity:.5 !important;
