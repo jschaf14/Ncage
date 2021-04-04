@@ -6,6 +6,60 @@ body{
    margin-left:auto; 
 }
 
+.category {
+    border: 2px solid #ccc;
+    padding:20px;
+    padding-top:10px;
+    border-radius: 12px;
+}
+.category h2{
+    margin-top:0px;
+}
+
+.category .saveButton{
+    margin:10px;
+    margin-left:0px;
+
+    /*background-color: #4CAF50; */
+    background-color:#406bdb;
+    border: none;
+    color: white;
+    padding: 15px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 8px;
+
+}
+
+.category label{
+    font-size:medium;
+}
+
+.category .saveButton:hover{
+    background-color: #3960c4;
+}
+
+.category checkbox{
+    margin-left: 0px;
+}
+
+/* .category input{
+    margin-top:5px;
+    margin-bottom:5px;
+} */
+.category .optionAttribute{
+    margin-top:5px;
+    margin-bottom:5px;
+}
+
+.category:hover{
+    background:#f7f9ff;
+}
+
+
+
 /* CSS for censored image alteration */
 .censoredContent{
     filter: blur(17px) !important;
