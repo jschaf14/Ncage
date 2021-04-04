@@ -33,7 +33,6 @@ function main() {
     var allImages = document.images;
     // loop though that array of image elements, skipping ones that have already been considered
     for(var i=numImages; i<allImages.length; i++) {
-        console.log("evaluating image");
         if(shouldReplaceImg()) {
             replaceImage(allImages[i]);
         }
@@ -70,6 +69,7 @@ function censorImage(image){
             // add the necessary elements and styling to make it look threatening
             element.classList.add("censoredContainer");
             censoredText = document.createElement("DIV");
+            // pick some threatening text at random
             randIndex = Math.floor(Math.random() * warnings.length);
             warning = warnings[randIndex];
             censoredText.innerHTML = warning;
