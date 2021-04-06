@@ -67,15 +67,15 @@ function censorImage(image){
         // find the parent div of this image
         if(element.nodeName.toLowerCase() == "div"){
             // add the necessary elements and styling to make it look threatening
-            element.classList.add("censoredContainer");
+            element.classList.add("ncCensoredContainer");
             censoredText = document.createElement("DIV");
             // pick some threatening text at random
             randIndex = Math.floor(Math.random() * warnings.length);
             warning = warnings[randIndex];
             censoredText.innerHTML = warning;
-            censoredText.classList.add("censoredText");
+            censoredText.classList.add("ncCensoredText");
             element.appendChild(censoredText);
-            image.classList.add("censoredContent");
+            image.classList.add("ncCensoredContent");
             scan = false;
         }
     }

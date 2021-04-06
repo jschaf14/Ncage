@@ -1,22 +1,22 @@
 /*CSS for the options page */
-body{
+.ncBody{
    width:80%;
    display:block;
    margin-right:auto;
    margin-left:auto; 
 }
 
-.category {
+.ncCategory {
     border: 2px solid #ccc;
     padding:20px;
     padding-top:10px;
     border-radius: 12px;
 }
-.category h2{
+.ncCategory h2{
     margin-top:0px;
 }
 
-.category .saveButton{
+.ncCategory .ncSaveButton{
     margin:10px;
     margin-left:0px;
 
@@ -33,15 +33,15 @@ body{
 
 }
 
-.category label{
+.ncCategory label{
     font-size:medium;
 }
 
-.category .saveButton:hover{
+.ncCategory .ncSaveButton:hover{
     background-color: #3960c4;
 }
 
-.category checkbox{
+.ncCategory checkbox{
     margin-left: 0px;
 }
 
@@ -49,23 +49,33 @@ body{
     margin-top:5px;
     margin-bottom:5px;
 } */
-.category .optionAttribute{
+.ncCategory .ncOptionAttribute{
     margin-top:5px;
     margin-bottom:5px;
 }
 
-.category:hover{
+.ncCategory:hover{
     background:#f7f9ff;
 }
 
+#ncStatus{
+    color:green;
+}
+
+.ncFooter{
+    position:absolute;
+    bottom:0;
+    width:80%;
+    text-align:center;
+}
 
 
 /* CSS for censored image alteration */
-.censoredContent{
+.ncCensoredContent{
     filter: blur(17px) !important;
     opacity:.5 !important;
 }
-.censoredContainer{
+.ncCensoredContainer{
     /* background-color: rgba(0,0,0,1); */
     background: black !important;
     position: relative !important;
@@ -74,7 +84,7 @@ body{
     overflow: hidden !important;
     word-wrap: normal !important;
 }
-.censoredText {
+.ncCensoredText {
     /* color: red; */
     visibility: visible !important;
     position: absolute !important;
